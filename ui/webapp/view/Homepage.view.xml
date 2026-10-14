@@ -1,0 +1,89 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="ui5.decimal.bug.controller.Homepage"
+    displayBlock="true"
+>
+    <Page
+        id="Homepage"
+        title="UI5 OData v2 Decimal Bug"
+    >
+        <content>
+            <FlexBox justifyContent="Center">
+                <VBox width="95%">
+                    <Table
+                        id="tblProducts"
+                        mode="SingleSelectMaster"
+                        growing="true"
+                        growingThreshold="15"
+                        items="{/Products}"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title text="Products" />
+                                    <ToolbarSpacer />
+                                    <OverflowToolbarButton
+                                        icon="sap-icon://edit"
+                                        press="onEditProduct"
+                                    />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <header>
+                                    <Label text="ID" />
+                                </header>
+                            </Column>
+                            <Column>
+                                <header>
+                                    <Label text="Name" />
+                                </header>
+                            </Column>
+                            <Column>
+                                <header>
+                                    <Label text="Price" />
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text
+                                        text="{
+                                            path: 'ID',
+                                            type: 'sap.ui.model.odata.type.Guid'
+                                        }"
+                                    />
+                                    <Text
+                                        text="{
+                                            path: 'name',
+                                            type: 'sap.ui.model.odata.type.String'
+                                        }"
+                                    />
+                                    <Text
+                                        text="{
+                                            path: 'price',
+                                            type: 'sap.ui.model.odata.type.Decimal',
+                                            constraints: {
+                                                precision: 13,
+                                                scale: 2
+                                            },
+                                            formatOptions: {
+                                                groupingEnabled: true,
+                                                groupingSize: 3,
+                                                groupingSeparator: ',',
+                                                decimalSeparator: '.'
+                                            }
+                                        }"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

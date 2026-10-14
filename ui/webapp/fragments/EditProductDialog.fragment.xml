@@ -1,0 +1,77 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Dialog
+        title="Edit Product"
+        escapeHandler=".onEditProductDialogESC"
+    >
+        <content>
+            <form:SimpleForm
+                id="sfEditProduct"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                adjustLabelSpan="false"
+                labelSpanXL="12"
+                labelSpanL="12"
+                labelSpanM="12"
+                labelSpanS="12"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+            >
+                <Label text="ID" />
+                <Text
+                    text="{
+                        path: 'ID',
+                        type: 'sap.ui.model.odata.type.Guid'
+                    }"
+                />
+
+                <Label text="Name" />
+                <Input
+                    value="{                                            
+                        path: 'name',
+                        type: 'sap.ui.model.odata.type.String'
+                    }"
+                />
+
+                <Label text="Price" />
+                <Input
+                    value="{                                            
+                        path: 'price',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 13,
+                            scale: 2
+                        },
+                        formatOptions: {
+                            groupingEnabled: true,
+                            groupingSize: 3,
+                            groupingSeparator: ',',
+                            decimalSeparator: '.'
+                        }
+                    }"
+                />
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button
+                text="Save"
+                type="Emphasized"
+                press="onSaveEditProduct"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Cancel"
+                press="onCancelEditProduct"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

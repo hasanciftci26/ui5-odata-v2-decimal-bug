@@ -1,0 +1,13 @@
+{
+  "name": "ui5-odata-v2-decimal-bug-ui",
+  "description": "UI5 OData v2 Decimal Bug",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@ui5/cli": "^4.0.71",
+    "http-proxy-middleware": "^4.2.0",
+    "ui5-middleware-livereload": "^3.4.0"
+  },
+  "scripts": {
+    "start": "ui5 serve --port 8080 -o index.html"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ui5-odata-v2-decimal-bug",
+  "description": "UI5 OData v2 Decimal Bug",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.16.1",
+    "@cap-js/hana": "^3.1.2",
+    "@sap/cds": "^10"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "start-dev": "cds watch --ext py --profile development",
+    "start-hybrid": "cds watch --ext py --profile hybrid",
+    "create-test-hana-instance": "cf create-service hana hdi-shared ui5-odata-v2-decimal-bug-db-test",
+    "deploy-hana-test": "cds deploy --to hana:ui5-odata-v2-decimal-bug-db-test",
+    "bind-hana-local": "cds bind --to ui5-odata-v2-decimal-bug-db-test --for hybrid"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "[development]": {
+          "kind": "sql"
+        },
+        "[hybrid]": {
+          "kind": "hana"
+        },
+        "[production]": {
+          "kind": "hana"
+        }
+      }
+    },
+    "features": {
+      "ieee754compatible": false
+    }
+  }
+}

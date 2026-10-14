@@ -1,0 +1,1 @@
+# UI5 OData v2 Decimal Bug
